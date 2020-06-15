@@ -1,0 +1,3 @@
+class RestaurantOwner < ApplicationRecord
+    
+end
