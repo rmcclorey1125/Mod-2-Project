@@ -6,6 +6,8 @@
     <p><%= r.date %></p>
     <p><%= r.time %> PM </p>
     <p>Party of <%= r.party %></p>
+    <p><%= link_to "Edit This Reservation", edit_reservation_path(r) %><br>
+    <%= button_to "Delete This Reservation", reservation_path(r), method: :delete %>
 <%end%>
 
 <p>Friends: </p>
@@ -13,4 +15,6 @@
 <p> <%= link_to follower.username, user_path(follower) %></p>
 <%end%>
 
-<%= link_to "User Home", users_path %>
+<%= link_to "User Home", users_path %><br>
+
+<%= link_to "Make a Reservation", new_reservation_path %>
