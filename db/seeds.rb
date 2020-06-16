@@ -6,20 +6,55 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Restaurant.destroy_all
+require 'faker'
+User.destroy_all
+RestaurantOwner.destroy_all 
+Restaurant.destroy_all 
+Review.destroy_all 
+Reservation.destroy_all 
+Follow.destroy_all 
 
+p "Generating Seed Data..."
 
-Restaurant.create(name: "Kasey's", address: "23 N Park Ave, Rockville Centre, NY, 11570", type: "American", restaurant_owner_id: , menu_url: "https://www.kaseysrvcny.com/wp-content/uploads/2020/06/Rooftop-32-Menu-website.pdf", image_url: "http://longislandleisure.com/wp-content/uploads/2015/06/12004920_889588584465891_5016005010258930870_n2.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "Anchor Down", address: "1960 Bayberry Ave, Merrick,NY, 11566", type: "Seafood", restaurant_owner_id: , menu_url: "https://menupages.com/anchor-down/1960-bayberry-ave-merrick/" , image_url: "https://content.idine.com/images/merchant/restaurant_images/8125017P1.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "Top Hat", address: "106 Bedford Ave, Bellmore, NY, 11710", type: "Creole", restaurant_owner_id: , menu_url: "https://tophatoysterbar.com/wp-content/uploads/2020/04/Top-Hat-Menu-April-Take-out.jpg" , image_url: "https://content.idine.com/images/merchant/restaurant_images/8134727P1.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "Waterzooi", address: "850 Franklin Ave, Garden City, NY, 11530", type: "Belgian", restaurant_owner_id: , menu_url: "https://waterzooi.com/garden-city/menus/dinner/" , image_url: "https://media-cdn.tripadvisor.com/media/photo-s/11/7d/77/15/back-of-restaurant.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "All American Hamburger", address: "4286 Merrick Rd, Massapequa, NY, 11758", type: "Fast Food", restaurant_owner_id: , menu_url: "https://www.allamericanhamburgerli.com/menu" , image_url: "https://i.pinimg.com/originals/f4/07/9f/f4079fcc1679e2e53d1df56996710886.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "Brixx & Barley", address: "152 W Park Ave, Long Beach, NY, 11561", type: "Pizza", restaurant_owner_id: , menu_url: "https://4d9cf48b-407e-43aa-aa00-8279172accc0.filesusr.com/ugd/e21fe2_9655c3f0fc874bb5875ba1154a130a71.pdf" , image_url: "https://cdn.newsday.com/polopoly_fs/1.34840907.1565401303!/httpImage/image.jpg_gen/derivatives/landscape_1280/image.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "Snaps", address: "2010 Wantag Ave, Wantagh, NY, 11793", type: "American", restaurant_owner_id: , menu_url: "https://3fa56b7a-134d-41d6-8396-18c4d1add95c.filesusr.com/ugd/2a8cc6_6670416f43ab49a3ab0bd67f467cb15e.pdf" , image_url: "https://lirestaurantchic.files.wordpress.com/2016/08/snaps.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "Thai Station", address: "2161 Merrick Ave, Merrick, NY, 11566", type: "Thai", restaurant_owner_id: , menu_url: "https://www.menuwithprice.com/menu/thai-station-restaurant/new-york/merrick/419531/" , image_url: "https://media-cdn.tripadvisor.com/media/photo-s/0f/ea/5b/41/photo2jpg.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "Press 195", address: "22 N Park Ave, Rockville Centre, NY, 11570", type: "Sandwich", restaurant_owner_id: , menu_url: "http://www.press195.com/rvctakeout.pdf" , image_url: "https://d6vrtzdlbankn.cloudfront.net/wp-content/uploads/2015/02/article-feature/749e8fb05a2f37f6be11e53f4f5825db-600x420.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
-Restaurant.create(name: "The Cheesecake Factory", address: "1504 Old Country Rd, Westbury, NY 11590", type: "American", restaurant_owner_id: , menu_url: "https://www.thecheesecakefactory.com/menu/" , image_url: "https://s3-media0.fl.yelpcdn.com/bphoto/wrL2O-atmOAQ2vcMJfkNJg/l.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+25.times do 
+    User.create(username: Faker::Name.name, password: Faker::Music::RockBand.name, age: rand(17..65))
+end 
 
-5.times do
-    User.create(username:, password:, age:, current_location:)
-end
+15.times do 
+    RestaurantOwner.create(username: Faker::Name.name, password: Faker::Music::RockBand.name)
+end 
+
+Restaurant.create(name: "All American Burger" , address: "4286 Merrick Rd, Massapequa, NY 11758", type: "Burger Joint", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.allamericanhamburgerli.com/menu", image_url: "https://images.app.goo.gl/7ud2vA4X5vgooG5u7", hours_of_operation: "11 AM - 8 PM M-Sunday")
+Restaurant.create(name: "Ginza", address: "45 Carmans Rd, Massapequa, NY 11758", type: "Japanese", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.ginzali.com/menu", image_url: "https://images.app.goo.gl/gVnKQpeUyCp3ePbP8", hours_of_operation: "Temporarily Closed")
+Restaurant.create(name: "Thom Thom", address: "3340 Park Ave, Wantagh, NY 11793", type: "Sushi/Steakhouse", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.thomthomrestaurant.com/menu", image_url: "https://images.app.goo.gl/B4X8S1FsLTNQVb8B6", hours_of_operation: "4 PM - 11 PM M-Saturday, 3 PM - 8 PM Sunday")
+Restaurant.create(name: "The Campagne House", address: "339 Broadway, Bethpage, NY 11714", type: "Gastropub", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://campagnehouse.com/menu/", image_url: "https://images.app.goo.gl/CX3NyEDgKkuzGaUj7", hours_of_operation: "11 AM - 11 PM Sunday to Thursday, 11 AM - 2:30 AM Friday-Saturday")
+Restaurant.create(name: "Nagahama", address: "169 E Park Ave, Long Beach, NY 11561", type: "Sushi", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "http://www.nagahamasushi.com/menus.html", image_url: "https://images.app.goo.gl/uMBnf7WjEB9yTc2Y7", hours_of_operation: "4 PM - 11 PM")
+Restaurant.create(name: "Peter's Clam Bar", address: "600 Long Beach Rd, Island Park, NY 11558", type: "Seafood", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.petersclamhouse.com/menu/restaurant-menu/", image_url: "https://images.app.goo.gl/ULijMmUrfvhAxFY28", hours_of_operation: "11 AM - 11 PM")
+Restaurant.create(name: "Mio Posto", address: "16 Merrick Ave, Merrick NY 11566", type: "Italian", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: , image_url: , hours_of_operation: "5 PM - 10 PM")
+Restaurant.create(name: "Gyro Palace", address: "1694 Sunrise Highway, Merrick, NY 11566", type: "Greel", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.gyropalacemerrick.com/categories?menu=1", image_url: , hours_of_operation: "11 PM - 9 PM")
+Restaurant.create(name: "Kyma", address: "1446 Old Northern Blvd, Roslyn, NY 11576", type: "Greek", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://kyma-roslyn.com/wp-content/uploads/2020/05/KYMA-to-go-Menu-6.pdf", image_url: , hours_of_operation: "1130 AM - 10 PM")
+Restaurant.create(name: "Cipollini", address: "2110 Northern Blvd, Manhasset, NY 11030", type: "Italian", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.pollrestaurants.com/media//cms/Cipollini_Dinner_1.pdf", image_url: , hours_of_operation: "12 PM - 11 PM")
+Restaurant.create(name: "Kasey's", address: "23 N Park Ave, Rockville Centre, NY, 11570", type: "American", restaurant_owner_id: RestaurantOwner.all.sample.id , menu_url: "https://www.kaseysrvcny.com/wp-content/uploads/2020/06/Rooftop-32-Menu-website.pdf", image_url: "http://longislandleisure.com/wp-content/uploads/2015/06/12004920_889588584465891_5016005010258930870_n2.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "Anchor Down", address: "1960 Bayberry Ave, Merrick,NY, 11566", type: "Seafood", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://menupages.com/anchor-down/1960-bayberry-ave-merrick/" , image_url: "https://content.idine.com/images/merchant/restaurant_images/8125017P1.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "Top Hat", address: "106 Bedford Ave, Bellmore, NY, 11710", type: "Creole", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://tophatoysterbar.com/wp-content/uploads/2020/04/Top-Hat-Menu-April-Take-out.jpg" , image_url: "https://content.idine.com/images/merchant/restaurant_images/8134727P1.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "Waterzooi", address: "850 Franklin Ave, Garden City, NY, 11530", type: "Belgian", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://waterzooi.com/garden-city/menus/dinner/" , image_url: "https://media-cdn.tripadvisor.com/media/photo-s/11/7d/77/15/back-of-restaurant.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "Brixx & Barley", address: "152 W Park Ave, Long Beach, NY, 11561", type: "Pizza", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://4d9cf48b-407e-43aa-aa00-8279172accc0.filesusr.com/ugd/e21fe2_9655c3f0fc874bb5875ba1154a130a71.pdf" , image_url: "https://cdn.newsday.com/polopoly_fs/1.34840907.1565401303!/httpImage/image.jpg_gen/derivatives/landscape_1280/image.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "Snaps", address: "2010 Wantag Ave, Wantagh, NY, 11793", type: "American", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://3fa56b7a-134d-41d6-8396-18c4d1add95c.filesusr.com/ugd/2a8cc6_6670416f43ab49a3ab0bd67f467cb15e.pdf" , image_url: "https://lirestaurantchic.files.wordpress.com/2016/08/snaps.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "Thai Station", address: "2161 Merrick Ave, Merrick, NY, 11566", type: "Thai", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.menuwithprice.com/menu/thai-station-restaurant/new-york/merrick/419531/" , image_url: "https://media-cdn.tripadvisor.com/media/photo-s/0f/ea/5b/41/photo2jpg.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "Press 195", address: "22 N Park Ave, Rockville Centre, NY, 11570", type: "Sandwich", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "http://www.press195.com/rvctakeout.pdf" , image_url: "https://d6vrtzdlbankn.cloudfront.net/wp-content/uploads/2015/02/article-feature/749e8fb05a2f37f6be11e53f4f5825db-600x420.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+Restaurant.create(name: "The Cheesecake Factory", address: "1504 Old Country Rd, Westbury, NY 11590", type: "American", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.thecheesecakefactory.com/menu/" , image_url: "https://s3-media0.fl.yelpcdn.com/bphoto/wrL2O-atmOAQ2vcMJfkNJg/l.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
+
+20.times do 
+    Reservation.create( user_id: User.all.sample.id, restaurant_id: Restaurant.all.sample.id, date: Faker::Date.in_date_period, time: rand(1..12), party: rand(1..6))
+end 
+
+20.times do 
+    Review.create(user_id: User.all.sample.id, restaurant_id: Restaurant.all.sample.id, rating: rand(1..5), content: Faker::Restaurant.review)
+end 
+
+10.times do 
+    Follow.create(followee_id: User.all.sample.id, follower_id: User.all.sample.id)
+end 
+
+p "Done."
+
