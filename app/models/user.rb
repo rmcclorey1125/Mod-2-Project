@@ -7,4 +7,7 @@ class User < ApplicationRecord
     has_many :reviews
     has_many :restaurants, through: :reviews
     has_many :reservations 
+
+    validates :username, uniqueness: :true 
+    validates :password, length: { minimum: 4}
 end

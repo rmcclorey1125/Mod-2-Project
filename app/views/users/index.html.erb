@@ -1,0 +1,8 @@
+<h1>User Index Page! Find a Friend!</h1><br>
+<h3>Stop eating lunch alone already!</h3><br>
+<ul>
+<% @users.each do |u| %>
+<%= link_to u.username, user_path(u) %><br>
+<%end%>
+</ul>
+
