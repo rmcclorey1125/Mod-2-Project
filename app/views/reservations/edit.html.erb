@@ -1,0 +1,21 @@
+<h1>New Reservation!</h1>
+
+<%if flash[:reservation_errors] %>
+<% flash[:reservation_errors].each do |e| %>
+<p><%= e %></p><br>
+<%end%>
+<%end%>
+
+<%= form_for @reservation do |f| %>
+<%= f.label "Restaurant" %>
+<%= f.collection_select :restaurant_id, @restaurants, :id, :name %>
+<%= f.label "Reservation For" %>
+<%= f.collection_select :user_id, @users, :id, :username %>
+<%= f.label "Date" %>
+<%= f.text_field :date %>
+<%= f.label "Time" %>
+<%= f.number_field :time %>
+<%= f.label "Number in Your Party"%>
+<%= f.number_field :party %>
+<%= f.submit %>
+<%end%>

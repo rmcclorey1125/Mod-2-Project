@@ -1,0 +1,17 @@
+<h3>New User SIGNUP</h3>
+
+<% if flash[:user_errors] %>
+<% flash[:user_errors].each do |e| %>
+<p><%= e %></p><br>
+<%end%>
+<%end%>
+
+<%= form_for @user do |f| %>
+<%= f.label :username %>
+<%= f.text_field :username %>
+<%= f.label :password %>
+<%= f.text_field :password %>
+<%= f.label :age %>
+<%= f.number_field :age %>
+<%= f.submit %>
+<%end%>
