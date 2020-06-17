@@ -1,0 +1,17 @@
+<h3>Log In Page</h3>
+
+<% if flash[:sign_in_error] %>
+<p style= 'color: red;'><%= flash[:sign_in_error] %></p>
+<% end %>
+
+<%= form_for :session, url: login_path do |f| %>
+
+<%= f.label :username %>
+<%= f.text_field :username %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.submit %>
+
+<% end %>

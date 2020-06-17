@@ -45,7 +45,7 @@ Restaurant.create(name: "Press 195", address: "22 N Park Ave, Rockville Centre, 
 Restaurant.create(name: "The Cheesecake Factory", address: "1504 Old Country Rd, Westbury, NY 11590", restaurant_type: "American", restaurant_owner_id: RestaurantOwner.all.sample.id, menu_url: "https://www.thecheesecakefactory.com/menu/" , image_url: "https://s3-media0.fl.yelpcdn.com/bphoto/wrL2O-atmOAQ2vcMJfkNJg/l.jpg", hours_of_operation: "Monday - Sunday 2pm - 10pm")
 
 20.times do 
-    Reservation.create( user_id: User.all.sample.id, restaurant_id: Restaurant.all.sample.id, date: Faker::Date.in_date_period, time: rand(1..12), party: rand(1..6))
+    Reservation.create( user_id: User.all.sample.id, restaurant_id: Restaurant.all.sample.id, date: Faker::Date.between(from: 2.days.ago, to: Date.today), party: rand(1..6))
 end 
 
 20.times do 

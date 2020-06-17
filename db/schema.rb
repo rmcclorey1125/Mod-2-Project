@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_144837) do
+ActiveRecord::Schema.define(version: 2020_06_17_220926) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id"
@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_144837) do
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "restaurant_id"
-    t.string "date"
-    t.integer "time"
+    t.datetime "date"
     t.integer "party"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -59,11 +58,11 @@ ActiveRecord::Schema.define(version: 2020_06_16_144837) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
     t.integer "age"
     t.string "current_location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
 end

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    skip_before_action :auth_user, only: [:new, :create]
+
     def index
         @users = User.all 
     end
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
     def create 
         @user = User.create(user_params)
         if @user.valid?
+            session[:user_id] = @user.id 
             redirect_to user_path(@user)
         else 
             flash[:user_errors] = @user.errors.full_messages

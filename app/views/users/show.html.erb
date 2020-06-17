@@ -4,8 +4,8 @@
 <p>Reservations: </p> 
 <% @user.reservations.each do |r| %>
     <p><%= link_to r.restaurant.name, restaurant_path(r.restaurant) %></p>
-    <p><%= r.date %></p>
-    <p><%= r.time %> PM </p>
+    <% date = r.date %>
+    <p><%= date.strftime(" %m/%d/%Y at %I:%M%p") %></p>
     <p>Party of <%= r.party %></p>
     <p><%= link_to "Edit This Reservation", edit_reservation_path(r) %><br>
     <%= button_to "Delete This Reservation", reservation_path(r), method: :delete %>
