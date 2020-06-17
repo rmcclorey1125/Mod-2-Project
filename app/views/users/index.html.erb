@@ -1,8 +1,8 @@
 <h1>User Index Page! Find a Friend!</h1><br>
 <h3>Stop eating lunch alone already!</h3><br>
-<ul>
+<div class = "flex-container">
 <% @users.each do |u| %>
-<%= link_to u.username, user_path(u) %><br>
+<div class = "flex-card"><%= link_to u.username, user_path(u) %></div>
 <%end%>
-</ul>
+</div>
 

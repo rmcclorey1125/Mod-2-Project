@@ -8,14 +8,25 @@
 
 <%= form_for @reservation do |f| %>
 <%= f.label "Restaurant" %>
+<br>
 <%= f.collection_select :restaurant_id, @restaurants, :id, :name %>
+<br>
 <%= f.label "Reservation For" %>
+<br>
 <%= f.collection_select :user_id, @users, :id, :username %>
+<br>
 <%= f.label "Date" %>
+<br>
 <%= f.text_field :date %>
+<br>
 <%= f.label "Time" %>
+<br>
 <%= f.number_field :time %>
+<br>
 <%= f.label "Number in Your Party"%>
+<br>
 <%= f.number_field :party %>
+<br>
 <%= f.submit %>
+<br>
 <%end%>

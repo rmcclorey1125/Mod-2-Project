@@ -1,5 +1,11 @@
 <h1>All Restaurants</h1>
 
+<div class = "flex-container">
 <% @restaurants.each do |restaurant| %>
-    <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
+    <div class = "flex-card">
+    <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+    <p><%= restaurant.average_rating %></p>
+    <div class = "img-index"><%= image_tag restaurant.image_url %></div>
+    </div>
 <% end %>
+</div>

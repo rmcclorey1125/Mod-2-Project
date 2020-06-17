@@ -1,20 +1,26 @@
 <h1><%= @restaurant.name %></h1>
 
-<%= image_tag @restaurant.image_url %>
+<div class ="show_img" ><%= image_tag @restaurant.image_url %></div>
+<br>
 <h3>Located: <%= @restaurant.address %></h3>
 <h3>Hours of Operation: <%= @restaurant.hours_of_operation %></h3>
 <h3>Cuisine: <%= @restaurant.restaurant_type %></h3>
 <h3>Link to: <%= link_to "Menu", @restaurant.menu_url  %></h3>
 
-<h4>Rating = <%= @restaurant.average_rating %>
+<h3>Rating = <%= @restaurant.average_rating %></h3>
+<hr>
 
-<h4>Reviews</h4>
+<h3>Reviews</h3>
+
+<h4><%= link_to "Add Review", new_review_path %></h4>
+
 <% @restaurant.reviews.each do |review| %>
-    <p><%= review.review_show %></p>
+    <p><%= review.user.username %></p>
+    <p>Rating: <%= review.rating %></p>
+    <p>Review: <%= review.content %></p>
     <p><%= link_to "Edit", edit_review_path(review) %></p>
+    <hr style="border-top: 1px dashed">
 <% end %>
 
 
-<%= link_to "Add Review", new_review_path %><br>
 
-<%= link_to "All Restaurants", restaurants_path %>

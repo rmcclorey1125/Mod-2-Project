@@ -13,3 +13,88 @@
  *= require_tree .
  *= require_self
  */
+
+header {
+    text-align: center;
+}
+
+img {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 50%;
+     object-fit: cover;
+     }
+
+.nav {
+    background-color: whitesmoke;
+    }
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;    
+}
+
+.flex-card {
+  padding: 10px;
+  text-align: center;
+}
+
+.img-index {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 0px;
+}
+
+.img-index > img {
+    height: 150px;
+}
+
+.show_img {
+    height: 400px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h1, h3, h4, .user-show {
+    text-align: center;
+}
+
+.button {
+    background-color: lightgray;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+
+  form {
+      box-sizing: border-box;
+      padding: 20px;
+  }
+
+  textarea {
+    margin: 10px;
+  }
+
+  input {
+      margin: 10px;
+  }
+
+  select {
+      width: 50%;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px;
+  }
+
+  label {
+
+  }
+
