@@ -21,11 +21,11 @@
         <li class = "button"><%= link_to 'New Reservation', new_reservation_path %></li>
     
         <% if @current_user %>
-        <li>Welcome <%= @current_user.username %></li>
-        <li class = "button"><%= link_to "Log-Out", logout_path, method: :delete %></li>
+        <li id = "right">Welcome <%= @current_user.username %></li>
+        <li class = "button" id = "right"><%= link_to "Log-Out", logout_path, method: :delete %></li>
         <% else %>
-        <li class = "button"><%= link_to 'Sign Up', new_user_path %></li>
-        <li class = "button"><%= link_to "Log-In", new_login_path %></li>
+        <li class = "button" id = "right"><%= link_to 'Sign Up', new_user_path %></li>
+        <li class = "button" id = "right"><%= link_to "Log-In", new_login_path %></li>
         <%end%>
 
     </ul>
