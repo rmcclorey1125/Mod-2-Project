@@ -7,7 +7,7 @@
 <%end%>
 
 <%= form_for @reservation do |f| %>
-    <%= f.label ("Reservation For" + " " + "#{@current_user.username}") %>
+    <%= f.label ("Reservation For: #{@current_user.username}") %>
     <br>
     <%= f.hidden_field :user_id, :value => @current_user.id %>  
     <br>

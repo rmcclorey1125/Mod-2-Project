@@ -1,7 +1,7 @@
 <h1>Write A Review </h1>
 
 <%= form_for @review do |f| %>
-    <%= f.label ("Reviewer:" + " " + "#{@current_user.username}") %>
+    <%= f.label ("Reviewer: #{@current_user.username}") %>
     <br>
     <%= f.hidden_field :user_id, :value => @current_user.id %>
     <br>
