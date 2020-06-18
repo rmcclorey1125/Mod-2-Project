@@ -12,6 +12,10 @@
 
 <h3>Reviews</h3>
 
+<% if flash[:edit_error] %>
+<%= flash[:edit_error] %>
+<% end %>
+
 <h4><%= link_to "Add Review", new_review_path %></h4>
 
 <% @restaurant.reviews.each do |review| %>

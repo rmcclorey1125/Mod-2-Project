@@ -15,9 +15,9 @@ class ReviewsController < ApplicationController
 
     def edit
         @review = Review.find(params[:id])
-
         @restaurants = Restaurant.all
         @users = User.all
+        credit_check(@review)
     end
 
     def update
@@ -37,7 +37,17 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        require(:review).permit(:user_id, :restaurant_id, :rating, :content)
+        params.require(:review).permit(:user_id, :restaurant_id, :rating, :content)
     end
+
+    def credit_check(review)
+        if @current_user.id == review.user.id 
+            #good to go 
+            render "edit"
+        else 
+            flash[:edit_error] = "You dont have access to edit this review."
+            redirect_to restaurant_path(review.restaurant)
+        end 
+    end 
 
 end
