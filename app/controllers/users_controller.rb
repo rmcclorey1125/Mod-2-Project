@@ -26,8 +26,14 @@ class UsersController < ApplicationController
     end 
 
     def follow
-        Follow.create(follower_id: @current_user.id, followee_id: params[:id])
-        redirect_to user_path(@current_user)
+        @user = User.find(params[:id])
+        if @user.followers.include?(@current_user)
+            flash[:follow_error] = "Error: You already follow this user."
+            redirect_to user_path(@user)
+        else 
+            Follow.create(follower_id: @current_user.id, followee_id: params[:id])
+            redirect_to user_path(@current_user)
+        end 
     end 
 
     private 
