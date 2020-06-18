@@ -6,6 +6,11 @@
 <%end%>
 <%end%>
 
+<%if flash[:res_edit_error] %>
+<p><%= flash[:res_edit_error] %></p>
+<%end%>
+
+
 <%= form_for @reservation do |f| %>
 <%= f.label ("Reservation For: #{@current_user.username}") %>
 <br>
